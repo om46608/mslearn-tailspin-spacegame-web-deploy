@@ -78,7 +78,7 @@ stages:
   jobs:
   - deployment: Deploy
     pool:
-      name: 'default'
+      vmImage: 'ubuntu-20.04'
     environment: dev
     variables:
     - group: Release
@@ -92,5 +92,5 @@ stages:
             displayName: 'Azure App Service Deploy: website'
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: 'tailspin-space-game-web-dev-17967'
+              appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
